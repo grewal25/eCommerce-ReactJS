@@ -2,9 +2,9 @@ import React,{useState} from 'react';
 
 import {Link} from 'react-router-dom';
 
-export default function Product() {
+export default function Product({addToCart}) {
 
-    const [cart, setCart]= useState([]);
+    // const [cart, setCart]= useState([]);
     const [products]=useState([
         {
             name: 'iPhone',
@@ -18,17 +18,10 @@ export default function Product() {
           }
     ])
 
-    const addToCart=(product)=>{
-        console.log('clicked',product)
-        setCart([...cart, {product}])
-    }
+    
 
     return(
         <div className="main-page">
-        <Link  to="/" >Products </Link>
-        <Link  to="cart/" >Cart ({cart.length})</Link>
-        
-       
         <h1>Product Page </h1>
         <div className="products" >
          {products.map((product,  idx)=>(
