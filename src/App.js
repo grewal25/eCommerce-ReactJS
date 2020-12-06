@@ -14,7 +14,7 @@ function App() {
   const [cart, setCart]= useState([]);
 
   const addToCart=(product)=>{
-    
+    console.log("addToCart button clicked",product)
     setCart([...cart, {...product}])
 }
 
