@@ -1,37 +1,41 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
+import {Samsung, iPhone} from '../ItemListContext'
 
-import {Link} from 'react-router-dom';
+import {ProductContext} from '../ItemListContext';
 
 export default function Product({addToCart}) {
 
-    // const [cart, setCart]= useState([]);
-    const [products]=useState([
-        {
-            name: 'iPhone',
-            cost : '$899.99',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB6BMWrPXA9KyTtxa6o600mjeUNJ7zSXgaNt--FDCR6YjQ4XWS5G1J3dSF5ChurfQEGxorkxYs&usqp=CAc',
-          },
-          {
-            name: 'Samsung',
-            cost : '$599.99',
-            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUGMCcF3_XBIKH5Dja-9iCkRP4CSA-CYaylQ&usqp=CAU'
-          }
-    ])
-
+    const [products, setProducts] = useContext(ProductContext) 
     
+    const [category,setCategory]=useState(iPhone)
 
+    const getProductInCategory = ()=>{
+        return products.filter(product=> product.category === category);
+    }
     return(
         <div className="main-page">
+            products
+        
         <h1>Product Page </h1>
+        Select a category
+        <select onChange={(e)=>setCategory(e.target.value)}>
+            <option  value={iPhone}>
+                    {iPhone}
+            </option>
+            <option  value={Samsung}>
+                    {Samsung}
+            </option>
+        </select>
         <div className="products" >
-         {products.map((product,  idx)=>(
-           <div key={idx}>
-             <h3>{product.name}</h3>
-             <h4>{product.cost}</h4>
-             <img src={product.image} alt = {product.name} />
+
+         {getProductInCategory().map((product,  idx)=>(
+             <div key={idx}>
+            <h3>{product.name} </h3>
+           <img src= {product.image} /> cost = {product.cost} 
              <button onClick={()=>addToCart(product)}
-             >Add to Cart</button>
-           </div>
+              >Add to Cart</button>
+             </div>
+
          ))}
          </div>
          <div>

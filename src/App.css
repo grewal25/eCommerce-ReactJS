@@ -1,5 +1,9 @@
-.App {
-    text-align: center;
+/* .App {
+      display: grid;
+      flex-wrap: wrap;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+
   }
   
   
@@ -9,4 +13,6 @@
     grid-template-columns: 1fr 1fr;
   }
 
- 
+ .cart {
+   border: 2px solid red;
+ } */
